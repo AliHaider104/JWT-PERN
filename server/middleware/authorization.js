@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
       return res.status(403).json("You are not Authorize");
     }
 
-    const verify = jwt.verify(JSON.parse(jwtToken), process.env.jwtSecret);
+    const verify = jwt.verify(jwtToken, process.env.jwtSecret);
     req.user = verify.user;
     next();
   } catch (error) {
